@@ -200,13 +200,10 @@ class TurnstileAPIServer:
             turnstile_div = f'<div class="cf-turnstile" style="background: white;" data-sitekey="{sitekey}"' + (f' data-action="{action}"' if action else '') + (f' data-cdata="{cdata}"' if cdata else '') + '></div>'
             page_data = self.HTML_TEMPLATE.replace("<!-- cf turnstile -->", turnstile_div)
 
-            # await page.route(url_with_slash, lambda route: route.fulfill(body=page_data, status=200))
             await page.goto(url_with_slash)
 
             if self.debug:
                 logger.debug(f"Browser {index}: Setting up Turnstile widget dimensions")
-
-            # await page.eval_on_selector("//div[@class='cf-turnstile']", "el => el.style.width = '70px'")
 
             if self.debug:
                 logger.debug(f"Browser {index}: Starting Turnstile response retrieval loop")
@@ -217,8 +214,6 @@ class TurnstileAPIServer:
                     if turnstile_check == "":
                         if self.debug:
                             logger.debug(f"Browser {index}: Attempt {_} - No Turnstile response yet")
-                        
-                        # await page.locator("//div[@class='cf-turnstile']").click(timeout=1000)
                         await asyncio.sleep(0.5)
                     else:
                         elapsed_time = round(time.time() - start_time, 3)
