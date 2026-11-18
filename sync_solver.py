@@ -123,7 +123,7 @@ class TurnstileSolver:
                 turnstile_check = page.input_value("[name=cf-turnstile-response]")
                 if turnstile_check == "":
 
-                    page.click("//div[@class='cf-turnstile']", timeout=3000)
+                    # page.click("//div[@class='cf-turnstile']", timeout=3000)
                     time.sleep(0.5)
                 else:
                     element = page.query_selector("[name=cf-turnstile-response]")

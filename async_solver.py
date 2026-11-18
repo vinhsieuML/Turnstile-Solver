@@ -124,7 +124,7 @@ class AsyncTurnstileSolver:
                 turnstile_check = await page.input_value("[name=cf-turnstile-response]")
                 if turnstile_check == "":
 
-                    await page.click("//div[@class='cf-turnstile']", timeout=3000)
+                    # await page.click("//div[@class='cf-turnstile']", timeout=3000)
                     await asyncio.sleep(0.5)
                 else:
                     element = await page.query_selector("[name=cf-turnstile-response]")
