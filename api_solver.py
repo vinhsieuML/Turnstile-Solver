@@ -235,7 +235,7 @@ class TurnstileAPIServer:
             elapsed_time = round(time.time() - start_time, 3)
             self.results[task_id] = {"value": "CAPTCHA_FAIL", "elapsed_time": elapsed_time}
             if self.debug:
-                logger.error(f"Browser {index}: Error solving Turnstile: {str(e)}")
+                logger.error(f"Browser {index}: Error solving Turnstile Cho nay: {str(e)}")
         finally:
             if self.debug:
                 logger.debug(f"Browser {index}: Clearing page state")
